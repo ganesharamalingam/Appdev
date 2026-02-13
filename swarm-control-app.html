@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swarm Control App</title>
+    <style>
+      :root{--bg:#f8fafc;--card:#fff;--text:#0f172a;--muted:#475569;--line:#e2e8f0;--blue:#2563eb;--green:#059669;--amber:#b45309;--rose:#be123c}
+      *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text)}
+      .wrap{max-width:1200px;margin:0 auto;padding:20px}
+      .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+      h1,h2,h3{margin:0 0 8px} p{margin:0;color:var(--muted)}
+      .grid{display:grid;gap:12px}.grid.kpi{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+      .k{border:1px solid var(--line);border-radius:10px;padding:10px}.v{font-size:1.2rem;font-weight:700}
+      .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+      @media (max-width:920px){.cols{grid-template-columns:1fr}}
+      label{font-size:.85rem;color:#334155;display:block;margin-bottom:4px}
+      input,select,button,textarea{width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:8px;font:inherit}
+      button{cursor:pointer;background:#0f172a;color:#fff}
+      button.secondary{background:#fff;color:#0f172a}
+      .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      table{width:100%;border-collapse:collapse;margin-top:8px} th,td{padding:8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+      th{font-size:.82rem;color:#334155}
+      .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.75rem;font-weight:700}
+      .s-Ideation{background:#dbeafe;color:#1e40af}.s-Validation{background:#ede9fe;color:#5b21b6}.s-PRD{background:#dcfce7;color:#166534}
+      .s-Build{background:#fef3c7;color:#92400e}.s-Test{background:#fee2e2;color:#991b1b}.s-Marketing{background:#cffafe;color:#155e75}.s-Monitor{background:#e2e8f0;color:#334155}
+      .status-active{color:var(--green);font-weight:700}.status-paused{color:var(--rose);font-weight:700}
+      .actions{display:flex;gap:8px;flex-wrap:wrap}
+      .small{font-size:.82rem;color:var(--muted)}
+      .link{display:inline-block;margin-top:8px;color:var(--blue);text-decoration:none}
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card">
+        <h1>Swarm Control App (Functional Prototype)</h1>
+        <p>Functional AMO office for multi-agent orchestration: onboard agents, manage ideas, enforce token/credit budgets, and run stage handoffs.</p>
+        <a class="link" href="./idea-dashboard.html">View strategic dashboard</a>
+      </section>
+
+      <section class="card">
+        <h2>AMO Controls</h2>
+        <div class="grid kpi" id="kpiGrid"></div>
+        <div class="actions" style="margin-top:10px">
+          <button id="runCycleBtn">Run 1 orchestration cycle</button>
+          <button id="runFiveBtn" class="secondary">Run 5 cycles</button>
+          <button id="resetBtn" class="secondary">Reset demo data</button>
+        </div>
+      </section>
+
+      <section class="cols">
+        <article class="card">
+          <h2>Onboard New Agent</h2>
+          <div class="row">
+            <div><label for="agentName">Agent Name</label><input id="agentName" placeholder="Security Agent" /></div>
+            <div><label for="agentType">Type</label><input id="agentType" placeholder="Security" /></div>
+          </div>
+          <div class="row" style="margin-top:8px">
+            <div><label for="agentStage">Primary Stage</label>
+              <select id="agentStage"></select>
+            </div>
+            <div><label for="agentTokenCap">Daily Token Cap</label><input id="agentTokenCap" type="number" min="1000" value="120000" /></div>
+          </div>
+          <div style="margin-top:8px"><label for="agentModel">Default Model</label><input id="agentModel" value="gpt-4.1-mini" /></div>
+          <div style="margin-top:8px"><button id="addAgentBtn">Add Agent</button></div>
+        </article>
+
+        <article class="card">
+          <h2>Submit Idea</h2>
+          <div><label for="ideaTitle">Idea Title</label><input id="ideaTitle" placeholder="Internal PRD Copilot" /></div>
+          <div class="row" style="margin-top:8px">
+            <div><label for="ideaImpact">Impact (1-100)</label><input id="ideaImpact" type="number" min="1" max="100" value="75" /></div>
+            <div><label for="ideaRisk">Risk (1-100)</label><input id="ideaRisk" type="number" min="1" max="100" value="30" /></div>
+          </div>
+          <div style="margin-top:8px"><label for="ideaNotes">Notes</label><textarea id="ideaNotes" rows="3" placeholder="Goal, users, and constraints"></textarea></div>
+          <div style="margin-top:8px"><button id="addIdeaBtn">Add Idea</button></div>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Agents</h2>
+        <table id="agentsTable"></table>
+      </section>
+
+      <section class="card">
+        <h2>Ideas & Stage Progress</h2>
+        <table id="ideasTable"></table>
+      </section>
+
+      <section class="card">
+        <h2>Execution Log</h2>
+        <p class="small">Each cycle routes ideas to the next stage if the owning agent is active and budgets allow it.</p>
+        <table id="logTable"></table>
+      </section>
+    </main>
+    <script src="./swarm-control-app.js"></script>
+  </body>
+</html>

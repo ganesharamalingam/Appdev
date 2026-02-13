@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMO Control Plane - Personal AI Swarm</title>
+    <style>
+      :root {
+        --bg: #f1f5f9;
+        --card: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --line: #e2e8f0;
+        --blue: #2563eb;
+        --violet: #7c3aed;
+        --green: #059669;
+        --amber: #b45309;
+        --rose: #be123c;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 22px;
+      }
+      .hero,
+      .card {
+        background: var(--card);
+        border-radius: 14px;
+        padding: 18px;
+        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+        margin-bottom: 14px;
+      }
+      h1, h2, h3 { margin: 0 0 8px; }
+      p { margin: 0; color: var(--muted); }
+      .kpis {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      }
+      .kpi {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px;
+      }
+      .kpi .label { font-size: 0.82rem; color: var(--muted); }
+      .kpi .value { margin-top: 6px; font-size: 1.35rem; font-weight: 700; }
+      .agent-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .agent {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 3px 9px;
+        border-radius: 999px;
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+      .active { background: #dbeafe; color: #1d4ed8; }
+      .watch { background: #fef3c7; color: #92400e; }
+      .ready { background: #dcfce7; color: #166534; }
+      .risk { background: #ffe4e6; color: #9f1239; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 10px 8px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      th {
+        font-size: 0.84rem;
+        color: #334155;
+      }
+      .gantt-wrap { overflow-x: auto; }
+      .gantt { min-width: 880px; }
+      .bar-track {
+        height: 16px;
+        background: #eef2ff;
+        border-radius: 999px;
+        position: relative;
+      }
+      .bar {
+        position: absolute;
+        top: 0;
+        height: 16px;
+        border-radius: 999px;
+      }
+      .b-validate { background: var(--violet); }
+      .b-pr { background: var(--blue); }
+      .b-build { background: var(--green); }
+      .b-test { background: var(--amber); }
+      .b-go { background: var(--rose); }
+      .two-col {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 12px;
+      }
+      ul { margin: 6px 0 0 18px; color: var(--muted); }
+      .cta {
+        margin-top: 12px;
+        display: inline-block;
+        text-decoration: none;
+        background: #0f172a;
+        color: #fff;
+        padding: 9px 12px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="hero">
+        <h1>AMO Office: Single Control Plane for Personal AI Swarm</h1>
+        <p>
+          Strict orchestration for multiple agents: Idea Bounce → Validation → PRD/Research → Build → Test → PR Creation → Launch Marketing → Monitor.
+          AMO office enforces governance on credits, token usage, quality gates, and release decisions.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>AMO Governance Snapshot</h2>
+        <div class="kpis">
+          <div class="kpi"><div class="label">Active Ideas</div><div class="value">12</div></div>
+          <div class="kpi"><div class="label">Swarm Agents Running</div><div class="value">8 / 9</div></div>
+          <div class="kpi"><div class="label">Credits (Monthly)</div><div class="value">$1,240 / $1,500</div></div>
+          <div class="kpi"><div class="label">Token Burn (24h)</div><div class="value">8.9M</div></div>
+          <div class="kpi"><div class="label">PR Creation Success</div><div class="value">91%</div></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Agent Swarm Board</h2>
+        <div class="agent-grid">
+          <article class="agent"><h3>1) Idea Bounce Agent</h3><span class="pill active">Active</span><p>Challenges assumptions, proposes alternatives, scores novelty and impact.</p></article>
+          <article class="agent"><h3>2) Validation Agent</h3><span class="pill active">Active</span><p>Runs feasibility checks, data readiness, risk profile, and ROI confidence.</p></article>
+          <article class="agent"><h3>3) PRD + Research Agent</h3><span class="pill ready">Ready</span><p>Generates full PRD, competitor map, and GTM assumptions.</p></article>
+          <article class="agent"><h3>4) Build Agent</h3><span class="pill watch">Monitoring</span><p>Implements feature slices after AMO gate approval and budget checks.</p></article>
+          <article class="agent"><h3>5) Test Agent</h3><span class="pill watch">Monitoring</span><p>Runs QA suite, eval benchmarks, and regression checks before merge.</p></article>
+          <article class="agent"><h3>6) PR Agent</h3><span class="pill active">Active</span><p>Creates branch, PR title/body, links evidence, and requests reviews automatically.</p></article>
+          <article class="agent"><h3>7) Marketing Agent</h3><span class="pill ready">Ready</span><p>Creates launch content and channel timing after release readiness.</p></article>
+          <article class="agent"><h3>8) Monitoring Agent</h3><span class="pill active">Active</span><p>Tracks usage, model drift, incidents, and post-launch learning loops.</p></article>
+          <article class="agent"><h3>9) AMO Office Agent</h3><span class="pill risk">Strict Control</span><p>Single authority on token limits, spend policies, stage gates, and escalation.</p></article>
+        </div>
+      </section>
+
+      <section class="card gantt-wrap">
+        <h2>Portfolio Gantt (Cross-Agent Workflow)</h2>
+        <table class="gantt">
+          <thead><tr><th>Idea</th><th>Owner Agent</th><th>Current Stage</th><th>Timeline (Week 1 → Week 6)</th></tr></thead>
+          <tbody>
+            <tr><td>AI Sales Copilot</td><td>Validation Agent</td><td><span class="pill active">Validation</span></td><td><div class="bar-track"><span class="bar b-validate" style="left: 16%; width: 26%"></span></div></td></tr>
+            <tr><td>PRD Assistant</td><td>PR Agent</td><td><span class="pill active">PR Creation</span></td><td><div class="bar-track"><span class="bar b-pr" style="left: 52%; width: 18%"></span></div></td></tr>
+            <tr><td>Support Triage AI</td><td>Build Agent</td><td><span class="pill watch">Build</span></td><td><div class="bar-track"><span class="bar b-build" style="left: 34%; width: 30%"></span></div></td></tr>
+            <tr><td>Growth Campaign Planner</td><td>Test Agent</td><td><span class="pill watch">Test</span></td><td><div class="bar-track"><span class="bar b-test" style="left: 66%; width: 18%"></span></div></td></tr>
+            <tr><td>Lead Gen Concierge</td><td>Marketing Agent</td><td><span class="pill ready">Go-to-Market</span></td><td><div class="bar-track"><span class="bar b-go" style="left: 82%; width: 14%"></span></div></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="two-col">
+        <article class="card">
+          <h3>PR Creation Controls (Fixes “Can’t Create PR”)</h3>
+          <ul>
+            <li>AMO verifies repo permissions + branch protection before PR agent runs.</li>
+            <li>Template-enforced PR body (motivation, diff summary, test proof, rollback plan).</li>
+            <li>Auto-retry with fallback token and reviewer escalation if PR API fails.</li>
+            <li>Hard stop if tests are red or budget threshold breached.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Strict Token & Credit Controls (AMO Policies)</h3>
+          <ul>
+            <li>Per-agent token caps with automatic pause after threshold breach.</li>
+            <li>Model routing policy: cheap model first, premium model only with confidence trigger.</li>
+            <li>Daily/weekly budget windows with alerting + lock mode.</li>
+            <li>Mandatory eval score before allowing expensive long-context runs.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="card">
+        <h3>Next Integration Step</h3>
+        <p>
+          Share your SenzAI APIs + identity/usage endpoints and this becomes a live AMO office:
+          real-time agent orchestration, automatic handoffs, PR creation automation, token governance,
+          and portfolio visibility in one personal command center.
+        </p>
+        <a class="cta" href="./swarm-control-app.html">Open functional swarm app</a>
+        <a class="cta" style="background:#334155;margin-left:8px" href="./index.html">Back to portfolio</a>
+      </section>
+    </main>
+  </body>
+</html>
